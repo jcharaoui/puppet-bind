@@ -33,9 +33,10 @@ options {
 	filter-aaaa-on-v4 yes;
 <%- end -%>
 <%- if @dnssec -%>
-	dnssec-validation yes;
 <%-   if @isc_bind_keys -%>
-        bindkeys-file "<%= @isc_bind_keys %>";
+    dnssec-validation auto;
+<%-   else -%>
+    dnssec-validation yes;
 <%-   end -%>
 <%- end -%>
 <%- if @version != '' -%>
